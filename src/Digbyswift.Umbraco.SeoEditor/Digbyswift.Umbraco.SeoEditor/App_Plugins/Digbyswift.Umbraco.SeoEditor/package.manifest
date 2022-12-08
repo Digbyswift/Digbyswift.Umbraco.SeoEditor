@@ -1,0 +1,20 @@
+﻿{
+  "name": "Seo Editor",
+  "version": "1.0.0",
+  "propertyEditors": [
+    {
+      "alias": "Digbyswift.Umbraco.SeoEditor",
+      "name": "Seo Editor",
+      "editor": {
+        "view": "~/App_Plugins/Digbyswift.Umbraco.SeoEditor/backoffice/meta-editor.html"
+      }
+    }
+  ],
+  "javascript": [
+    "~/App_Plugins/Digbyswift.Umbraco.SeoEditor/backoffice/scripts/config.js",
+    "~/App_Plugins/Digbyswift.Umbraco.SeoEditor/backoffice/scripts/meta-editor-controller.js"
+  ],
+  "css": [
+    "~/App_Plugins/Digbyswift.Umbraco.SeoEditor/backoffice/css/meta-editor.css"
+  ]
+}

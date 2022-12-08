@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ContentTargetFolders>.</ContentTargetFolders>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Digbyswift.Umbraco.SeoEditor</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Title>Digbyswift.Umbraco.SeoEditor</Title>
+    <Authors>Digbyswift Ltd</Authors>
+    <Copyright>Copyright © Digbyswift Ltd</Copyright>
+    <PackageProjectUrl>https://www.nuget.org/packages/Digbyswift.Umbraco.SeoEditor</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/digbyswift/Digbyswift.Umbraco.SeoEditor/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageIcon>package-icon.png</PackageIcon>
+    <PackageIconUrl>package-icon.png</PackageIconUrl>
+    <RepositoryUrl>https://www.nuget.org/packages/Digbyswift.Umbraco.SeoEditor</RepositoryUrl>
+    <PackageTags>c# umbraco</PackageTags>
+    <PackageVersion>10.0.1</PackageVersion>
+    <AssemblyVersion>10.0.1</AssemblyVersion>
+    <FileVersion>10.0.1</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="App_Plugins\Digbyswift.Umbraco.SeoEditor\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
+    <None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\package-icon.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="10.0.1" />
+  </ItemGroup>
+
+</Project>

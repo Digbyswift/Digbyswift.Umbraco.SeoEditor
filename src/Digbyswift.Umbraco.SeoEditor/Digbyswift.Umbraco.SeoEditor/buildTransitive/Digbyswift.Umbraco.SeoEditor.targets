@@ -1,0 +1,24 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <DigbyswiftUmbracoSeoEditorContentFilesPath>$(MSBuildThisFileDirectory)..\App_Plugins\Digbyswift.Umbraco.SeoEditor\**\*.*</DigbyswiftUmbracoSeoEditorContentFilesPath>
+  </PropertyGroup>
+
+  <Target Name="CopyDigbyswiftUmbracoSeoEditorAssets" BeforeTargets="Build">
+    <ItemGroup>
+      <DigbyswiftUmbracoSeoEditorContentFiles Include="$(DigbyswiftUmbracoSeoEditorContentFilesPath)" />
+    </ItemGroup>
+    <Message Text="Copying Digbyswift.Umbraco.SeoEditor files: $(DigbyswiftUmbracoSeoEditorContentFilesPath) - #@(DigbyswiftUmbracoSeoEditorContentFiles->Count()) files" Importance="high" />
+    <Copy
+      SourceFiles="@(DigbyswiftUmbracoSeoEditorContentFiles)"
+      DestinationFiles="@(DigbyswiftUmbracoSeoEditorContentFiles->'$(MSBuildProjectDirectory)\App_Plugins\Digbyswift.Umbraco.SeoEditor\%(RecursiveDir)%(Filename)%(Extension)')"
+      SkipUnchangedFiles="true" />
+  </Target>
+
+  <Target Name="ClearDigbyswiftUmbracoSeoEditorAssets" BeforeTargets="Clean">
+    <ItemGroup>
+      <DigbyswiftUmbracoSeoEditorDir Include="$(MSBuildProjectDirectory)\App_Plugins\Digbyswift.Umbraco.SeoEditor\" />
+    </ItemGroup>
+    <Message Text="Clear old Digbyswift.Umbraco.SeoEditor data" Importance="high" />
+    <RemoveDir Directories="@(DigbyswiftUmbracoSeoEditorDir)" />
+  </Target>
+</Project>
