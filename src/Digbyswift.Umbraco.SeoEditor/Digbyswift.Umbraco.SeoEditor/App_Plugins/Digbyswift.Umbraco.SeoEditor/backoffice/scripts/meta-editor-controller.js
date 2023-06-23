@@ -16,128 +16,160 @@
         ];
 
         const currentState = editorState.getCurrent();
-
-        console.log(currentState);
-
-        contentResource.getCultureAndDomains(currentState.id)
-            .then(function (data) {
-                $scope.ds.domain = data.domains.length == 0
-                    ? `${location.protocol}//${location.hostname}`
-                    : data.domains[0].substring(0, data.domains[0].length - 1);
-
-                $scope.ds.loading = false;
-            });
-
-        if ($scope.model.value.metaImageId) {
-            mediaResource.getById($scope.model.value.metaImageId)
-                .then(function (item) {
-                    $scope.ds.metaImageUrl = `/umbraco/backoffice/umbracoapi/images/GetBigThumbnail?originalImagePath=${item.mediaLink}&rnd=0.9892062282743543`;
-                });
+        const defaultModelValue = {
+            metaTitle: null,
+            metaDescription: null,
+            metaImageId: null,
+            canonicalUrl: null,
+            metaRobots: []
         }
 
-        $scope.ds = {};
-        $scope.ds.loading = true;
-        $scope.ds.defaultVariant = currentState.variants[0];
-        $scope.ds.robotOptions = robotOptions;
-        $scope.ds.url = $scope.model.culture !== null
-            ? currentState.urls.filter((x) => x.culture === $scope.model.culture)[0].text
-            : currentState.urls[0].text;
-
-        $scope.ds.metaTitle = $scope.model.value.metaTitle || null;
-        $scope.ds.metaDescription = $scope.model.value.metaDescription || null;
-        $scope.ds.metaImageId = $scope.model.value.metaImageId || null;
-        $scope.ds.metaRobots = $scope.model.value.metaRobots || [];
-        $scope.ds.canonicalUrl = $scope.model.value.canonicalUrl || null;
-        $scope.ds.hidePreview = canHidePreview();
-        $scope.ds.toggleOptions = toggleOptions;
-        $scope.ds.getTitle = getTitle;
-        $scope.ds.getDescription = getDescription;
-        $scope.ds.getPath = getPath;
-        $scope.ds.removeMetaImage = removeMetaImage;
-
-        $scope.$watch('ds.metaTitle', () => updateModel());
-        $scope.$watch('ds.metaDescription', () => updateModel());
-        $scope.$watch('ds.canonicalUrl', () => updateModel());
-        $scope.$watch('ds.metaImageId', () => updateModel());
-
-        $scope.model.value = {
-            metaTitle: $scope.ds.metaTitle,
-            metaDescription: $scope.ds.metaDescription,
-            metaImageId: $scope.ds.metaImageId,
-            metaRobots: $scope.ds.metaRobots,
-            canonicalUrl: $scope.ds.canonicalUrl,
-        };
-
-        var dialogOptions = {
-            multiPicker: false,
-            filterCssClass: "not-allowed not-published",
-            submit: function (data) {
-                data.selection.forEach(item => $scope.ds.add(item));
-                editorService.close();
+        $scope.ds = {
+            isLoading: true,
+            data: {
+                activeVariantName: currentState.variants.filter(x => x.active)[0].name,
+                robotOptions: robotOptions,
+                metaImageUrl: '',
+                preview: {
+                    baseUrl: `${location.protocol}//${location.hostname}`
+                }
             },
-            close: function () {
-                editorService.close();
+            toggleOptions: toggleOptions,
+            getTitle: getTitle,
+            getDescription: getDescription,
+            getPath: getPath,
+            openMediaPicker: openMediaPicker,
+            addMediaItem: addMediaItem,
+            resetMediaPicker: removeMetaImage,
+            isPreviewEnabled: modelHasDataForPreview
+        };
+
+        //console.log('$scope.model', $scope.model);
+        //console.log('currentState', currentState);
+
+        if (currentState.id === 0) {
+            $scope.model.value = defaultModelValue;
+            $scope.ds.isLoading = false;
+        }
+        else {
+            // Set the preview URL
+            contentResource.getCultureAndDomains(currentState.id)
+                .then(function (data) {
+                    if (data.domains.length >= 1) {
+                        $scope.ds.data.preview.url = data.domains[0].substring(0, data.domains[0].length - 1);
+                    }
+
+                    $scope.ds.isLoading = false;
+                });
+
+            // Set the selected media
+            if ($scope.model.value.hasOwnProperty('metaImageId') && $scope.model.value.metaImageId !== null) {
+                mediaResource.getById($scope.model.value.metaImageId)
+                    .then(function (item) {
+                        $scope.ds.data.metaImageUrl = `/umbraco/backoffice/umbracoapi/images/GetBigThumbnail?originalImagePath=${item.mediaLink}&rnd=0.9892062282743543`;
+                    });
             }
-        };
+        }
 
-        $scope.ds.openMediaPicker = function () {
-            editorService.mediaPicker(dialogOptions);
-        };
+        // Model value checks
+        // ------------------
 
-        $scope.ds.add = function (item) {
-            $scope.ds.metaImageUrl = item.thumbnail;
-            $scope.ds.metaImageId = item.id;
-        };
+        function modelHasValue() {
+            return typeof $scope.model.value !== 'undefined' && $scope.model.value !== '';
+        }
 
-        function updateModel() {
-            $scope.model.value = {
-                metaTitle: $scope.ds.metaTitle,
-                metaDescription: $scope.ds.metaDescription,
-                metaImageId: $scope.ds.metaImageId,
-                metaRobots: $scope.ds.metaRobots,
-                canonicalUrl: $scope.ds.canonicalUrl,
-            };
+        function modelHasDataForPreview() {
+            if (!modelHasValue()){
+                return false;
+            }
 
-            $scope.ds.hidePreview = canHidePreview();
-        };
+            if ($scope.model.value.metaTitle === null && currentState.variants.filter(x => x.active)[0].name === '') {
+                return false;
+            }
+
+            return true;
+        }
+        
+        
+        // Robots toggle functions
+        // -----------------------
 
         function toggleOptions(option) {
-            var idx = $scope.ds.metaRobots.indexOf(option);
-            if (idx > -1) {
-                $scope.ds.metaRobots.splice(idx, 1);
+            if ($scope.model.value.metaRobots.length === 0) {
+                $scope.model.value.metaRobots.push(option);
+                return;
+            }
+
+            const idx = $scope.model.value.metaRobots.indexOf(option);
+            if (idx === -1) {
+                $scope.model.value.metaRobots.push(option);
             }
             else {
-                $scope.ds.metaRobots.push(option);
+                $scope.model.value.metaRobots.splice(idx, 1);
             }
-
-            updateModel();
         }
 
-        function canHidePreview() {
-            return $scope.ds.metaRobots && (
-                $scope.ds.metaRobots.indexOf('noindex') > -1 ||
-                $scope.ds.metaRobots.indexOf('nosnippet') > -1
-            );
+
+        // Media picker functions
+        // ----------------------
+        
+        function openMediaPicker() {
+            editorService.mediaPicker({
+                multiPicker: false,
+                filterCssClass: "not-allowed not-published",
+                submit: function (data) {
+                    data.selection.forEach(item => $scope.ds.addMediaItem(item));
+                    editorService.close();
+                },
+                close: function () {
+                    editorService.close();
+                }
+            });
         }
 
-        function getTitle() {
-            return truncateString($scope.ds.metaTitle || $scope.ds.defaultVariant.name, maxRecommendedTitleLength, ' ...');
-        }
-
-        function getDescription() {
-            return truncateString($scope.ds.metaDescription, maxRecommendedDescriptionLength, ' ...');
-        }
-
-        function getPath() {
-            var canonicalUrl = $scope.ds.canonicalUrl || $scope.ds.url;
-            if (canonicalUrl.indexOf('/') !== 0) canonicalUrl = 'colliding-urls';
-            var urlParts = canonicalUrl.split('/').filter((x) => x !== '');
-            return ` › ${urlParts.join(' › ')}`;
+        function addMediaItem(item) {
+            $scope.model.value.metaImageId = item.id;
+            $scope.ds.data.metaImageUrl = item.thumbnail;
         }
 
         function removeMetaImage() {
-            $scope.ds.metaImageId = null;
-            $scope.ds.metaImageUrl = null;
+            $scope.model.value.metaImageId = null;
+            $scope.ds.data.metaImageUrl = null;
+        }
+        
+
+        // Preview functions
+        // -----------------
+        
+        function getTitle() {
+            return truncateString($scope.model.value.metaTitle || currentState.variants.filter(x => x.active)[0].name, maxRecommendedTitleLength, ' ...');
+        }
+
+        function getDescription() {
+            if ($scope.model.value.metaDescription === null) {
+                return;
+            }
+            
+            return truncateString($scope.model.value.metaDescription, maxRecommendedDescriptionLength, ' ...');
+        }
+
+        function getPath() {
+            
+            const currentInternalPath = currentState.urls.length >= 1 && currentState.urls[0].isUrl
+                ? currentState.urls[0].text
+                : null;
+            
+            let canonicalUrl = $scope.model.value.canonicalUrl || currentInternalPath;
+            if (canonicalUrl == null) {
+                return null;
+            }
+            
+            if (canonicalUrl.indexOf('/') > -1) {
+                const urlParts = canonicalUrl.split('/').filter((x) => x !== '');
+                return ` › ${urlParts.join(' › ')}`;
+            }
+            
+            return ` › ${canonicalUrl}`;
         }
 
         function truncateString(str, maxLength, append) {
@@ -145,9 +177,10 @@
                 return str;
             }
 
-            var trimmedString = str.substr(0, maxLength);
-            return trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))) + (append || '');
+            const trimmedString = str.substring(0, maxLength);
+            return trimmedString.substring(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))) + (append || '');
         }
+    
     }
 
     angular.module("umbraco").controller("Digbyswift.Umbraco.MetaEditorController", ['$scope', 'editorState', 'editorService', 'contentResource', 'mediaResource', controller]);
