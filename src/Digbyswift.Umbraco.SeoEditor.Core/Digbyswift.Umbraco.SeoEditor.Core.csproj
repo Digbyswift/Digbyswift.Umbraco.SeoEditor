@@ -21,6 +21,7 @@
 	  <Nullable>enable</Nullable>
 	  <PackageReleaseNotes>Supporting library for the Digbyswift.Umbraco.SeoEditor package.</PackageReleaseNotes>
 	  <Description>Supporting library for the Digbyswift.Umbraco.SeoEditor package.</Description>
+	  <LangVersion>default</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

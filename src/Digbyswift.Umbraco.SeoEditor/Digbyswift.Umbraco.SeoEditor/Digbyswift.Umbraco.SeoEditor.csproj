@@ -20,6 +20,7 @@
         <PackageIconUrl>package-icon.png</PackageIconUrl>
         <Nullable>enable</Nullable>
         <Description>A property editor for metadata, largely inspired by the v7 SeoMetadata package.</Description>
+        <LangVersion>default</LangVersion>
     </PropertyGroup>
     <ItemGroup>
         <Content Include="App_Plugins\Digbyswift.Umbraco.SeoEditor\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />

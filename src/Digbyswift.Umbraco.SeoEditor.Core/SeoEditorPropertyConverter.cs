@@ -17,9 +17,6 @@ public sealed class SeoEditorPropertyConverter : PropertyValueConverterBase
 
     public override object? ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview)
     {
-        if (inter == null)
-            return null;
-
         if (inter is string stringInter)
             return JsonConvert.DeserializeObject<SeoEditorModel>(stringInter);
 
