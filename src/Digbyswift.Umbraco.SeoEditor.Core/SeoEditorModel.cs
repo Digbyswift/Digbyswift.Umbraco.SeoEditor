@@ -1,4 +1,4 @@
-﻿namespace Digbyswift.Umbraco.SeoEditor;
+﻿namespace Digbyswift.Umbraco.SeoEditor.Core;
 
 public class SeoEditorModel
 {

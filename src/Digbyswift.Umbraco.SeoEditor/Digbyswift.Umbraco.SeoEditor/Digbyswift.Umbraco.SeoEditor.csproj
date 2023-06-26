@@ -13,29 +13,30 @@
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>c# umbraco</PackageTags>
-        <PackageVersion>10.0.3</PackageVersion>
-        <AssemblyVersion>10.0.3</AssemblyVersion>
-        <FileVersion>10.0.3</FileVersion>
+        <PackageVersion>10.1.0</PackageVersion>
+        <AssemblyVersion>10.1.0</AssemblyVersion>
+        <FileVersion>10.1.0</FileVersion>
         <PackageIcon>package-icon.png</PackageIcon>
         <PackageIconUrl>package-icon.png</PackageIconUrl>
         <Nullable>enable</Nullable>
+        <Description>A property editor for metadata, largely inspired by the v7 SeoMetadata package.</Description>
+        <LangVersion>default</LangVersion>
     </PropertyGroup>
     <ItemGroup>
-        <Content Include="App_Plugins\Digbyswift.Umbraco.SeoEditor\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always"/>
-        <None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive"/>
+        <Content Include="App_Plugins\Digbyswift.Umbraco.SeoEditor\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
+        <None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="..\..\..\package-icon.png" Pack="true" PackagePath=""/>
+        <None Include="..\..\..\package-icon.png" Pack="true" PackagePath="" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="..\..\..\LICENSE" Pack="true" PackagePath=""/>
+        <None Include="..\..\..\LICENSE" Pack="true" PackagePath="" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="..\..\..\README.md" Pack="true" PackagePath=""/>
+        <None Include="..\..\..\README.md" Pack="true" PackagePath="" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.2"/>
-        <PackageReference Include="Umbraco.Cms.Core" Version="10.0.1"/>
+      <ProjectReference Include="..\..\Digbyswift.Umbraco.SeoEditor.Core\Digbyswift.Umbraco.SeoEditor.Core.csproj" />
     </ItemGroup>
 
 </Project>

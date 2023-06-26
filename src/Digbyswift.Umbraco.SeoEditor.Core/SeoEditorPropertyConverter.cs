@@ -2,7 +2,7 @@
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PropertyEditors;
 
-namespace Digbyswift.Umbraco.SeoEditor;
+namespace Digbyswift.Umbraco.SeoEditor.Core;
 
 public sealed class SeoEditorPropertyConverter : PropertyValueConverterBase
 {
@@ -17,9 +17,6 @@ public sealed class SeoEditorPropertyConverter : PropertyValueConverterBase
 
     public override object? ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview)
     {
-        if (inter == null)
-            return null;
-
         if (inter is string stringInter)
             return JsonConvert.DeserializeObject<SeoEditorModel>(stringInter);
 

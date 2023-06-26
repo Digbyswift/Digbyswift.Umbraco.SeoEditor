@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Digbyswift.Umbraco.SeoEditor", "Digbyswift.Umbraco.SeoEditor\Digbyswift.Umbraco.SeoEditor.csproj", "{70657AF1-494B-42D0-B7BA-B8C1DE882ACA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digbyswift.Umbraco.SeoEditor.Core", "..\Digbyswift.Umbraco.SeoEditor.Core\Digbyswift.Umbraco.SeoEditor.Core.csproj", "{89703EAC-2BFA-4CC0-BB37-5F830253D988}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{70657AF1-494B-42D0-B7BA-B8C1DE882ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70657AF1-494B-42D0-B7BA-B8C1DE882ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70657AF1-494B-42D0-B7BA-B8C1DE882ACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89703EAC-2BFA-4CC0-BB37-5F830253D988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89703EAC-2BFA-4CC0-BB37-5F830253D988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89703EAC-2BFA-4CC0-BB37-5F830253D988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89703EAC-2BFA-4CC0-BB37-5F830253D988}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
