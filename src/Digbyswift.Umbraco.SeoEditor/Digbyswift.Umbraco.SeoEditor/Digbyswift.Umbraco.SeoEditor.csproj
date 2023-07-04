@@ -13,14 +13,15 @@
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>c# umbraco</PackageTags>
-        <PackageVersion>10.1.0</PackageVersion>
-        <AssemblyVersion>10.1.0</AssemblyVersion>
-        <FileVersion>10.1.0</FileVersion>
+        <PackageVersion>10.2.0</PackageVersion>
+        <AssemblyVersion>10.2.0</AssemblyVersion>
+        <FileVersion>10.2.0</FileVersion>
         <PackageIcon>package-icon.png</PackageIcon>
         <PackageIconUrl>package-icon.png</PackageIconUrl>
         <Nullable>enable</Nullable>
         <Description>A property editor for metadata, largely inspired by the v7 SeoMetadata package.</Description>
         <LangVersion>default</LangVersion>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     </PropertyGroup>
     <ItemGroup>
         <Content Include="App_Plugins\Digbyswift.Umbraco.SeoEditor\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
