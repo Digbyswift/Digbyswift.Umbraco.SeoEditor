@@ -44,14 +44,15 @@
             isPreviewEnabled: modelHasDataForPreview
         };
 
-        //console.log('$scope.model', $scope.model);
-        //console.log('currentState', currentState);
+        if (!modelHasValue()) {
+            $scope.model.value = {};
+        }
 
         if (currentState.id === 0) {
-            $scope.model.value = defaultModelValue;
             $scope.ds.isLoading = false;
         }
         else {
+
             // Set the preview URL
             contentResource.getCultureAndDomains(currentState.id)
                 .then(function (data) {
@@ -75,7 +76,7 @@
         // ------------------
 
         function modelHasValue() {
-            return typeof $scope.model.value !== 'undefined' && $scope.model.value !== '';
+            return typeof $scope.model.value === 'object';
         }
 
         function modelHasDataForPreview() {
@@ -83,21 +84,20 @@
                 return false;
             }
 
-            if ($scope.model.value.metaTitle === null && currentState.variants.filter(x => x.active)[0].name === '') {
+            if ((!$scope.model.value.hasOwnProperty('metaTitle') || $scope.model.value.metaTitle === null) && currentState.variants.filter(x => x.active)[0].name === '') {
                 return false;
             }
 
             return true;
         }
-        
-        
+
+
         // Robots toggle functions
         // -----------------------
 
         function toggleOptions(option) {
-            if ($scope.model.value.metaRobots.length === 0) {
-                $scope.model.value.metaRobots.push(option);
-                return;
+            if (!$scope.model.value.hasOwnProperty('metaRobots')) {
+                $scope.model.value.metaRobots = [];
             }
 
             const idx = $scope.model.value.metaRobots.indexOf(option);
@@ -112,7 +112,7 @@
 
         // Media picker functions
         // ----------------------
-        
+
         function openMediaPicker() {
             editorService.mediaPicker({
                 multiPicker: false,
@@ -136,11 +136,11 @@
             $scope.model.value.metaImageId = null;
             $scope.ds.data.metaImageUrl = null;
         }
-        
+
 
         // Preview functions
         // -----------------
-        
+
         function getTitle() {
             return truncateString($scope.model.value.metaTitle || currentState.variants.filter(x => x.active)[0].name, maxRecommendedTitleLength, ' ...');
         }
@@ -149,26 +149,26 @@
             if ($scope.model.value.metaDescription === null) {
                 return;
             }
-            
+
             return truncateString($scope.model.value.metaDescription, maxRecommendedDescriptionLength, ' ...');
         }
 
         function getPath() {
-            
+
             const currentInternalPath = currentState.urls.length >= 1 && currentState.urls[0].isUrl
                 ? currentState.urls[0].text
                 : null;
-            
+
             let canonicalUrl = $scope.model.value.canonicalUrl || currentInternalPath;
             if (canonicalUrl == null) {
                 return null;
             }
-            
+
             if (canonicalUrl.indexOf('/') > -1) {
                 const urlParts = canonicalUrl.split('/').filter((x) => x !== '');
                 return ` › ${urlParts.join(' › ')}`;
             }
-            
+
             return ` › ${canonicalUrl}`;
         }
 
@@ -180,7 +180,7 @@
             const trimmedString = str.substring(0, maxLength);
             return trimmedString.substring(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' '))) + (append || '');
         }
-    
+
     }
 
     angular.module("umbraco").controller("Digbyswift.Umbraco.MetaEditorController", ['$scope', 'editorState', 'editorService', 'contentResource', 'mediaResource', controller]);
