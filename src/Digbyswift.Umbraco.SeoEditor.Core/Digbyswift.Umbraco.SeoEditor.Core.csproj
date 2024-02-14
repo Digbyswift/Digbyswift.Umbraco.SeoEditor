@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <ContentTargetFolders>.</ContentTargetFolders>
         <ImplicitUsings>enable</ImplicitUsings>
@@ -13,9 +12,9 @@
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>c# umbraco</PackageTags>
-        <PackageVersion>10.2.1</PackageVersion>
-        <AssemblyVersion>10.2.1</AssemblyVersion>
-        <FileVersion>10.2.1</FileVersion>
+        <PackageVersion>13.0.0</PackageVersion>
+        <AssemblyVersion>13.0.0</AssemblyVersion>
+        <FileVersion>13.0.0</FileVersion>
         <PackageIcon>package-icon.png</PackageIcon>
         <PackageIconUrl>package-icon.png</PackageIconUrl>
         <Nullable>enable</Nullable>
@@ -23,6 +22,7 @@
         <Description>Supporting library for the Digbyswift.Umbraco.SeoEditor package.</Description>
         <LangVersion>default</LangVersion>
         <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+        <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
     </PropertyGroup>
 
     <ItemGroup>
@@ -41,8 +41,15 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
         <PackageReference Include="Umbraco.Cms.Core" Version="10.0.1" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
+        <PackageReference Include="Umbraco.Cms.Core" Version="13.1.1" />
     </ItemGroup>
 
 </Project>
