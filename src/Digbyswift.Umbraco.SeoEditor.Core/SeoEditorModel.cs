@@ -5,7 +5,7 @@ public class SeoEditorModel
     public string? MetaTitle { get; set; }
     public string? MetaDescription { get; set; }
     public int? MetaImageId { get; set; }
-    public string[] MetaRobots { get; set; } = Array.Empty<string>();
+    public string[] MetaRobots { get; set; } = [];
     public string? CanonicalUrl { get; set; }
 
     public bool NoIndex => MetaRobots.Contains("noindex");

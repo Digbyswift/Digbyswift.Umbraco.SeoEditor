@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <ContentTargetFolders>.</ContentTargetFolders>
         <ImplicitUsings>enable</ImplicitUsings>
@@ -12,10 +12,11 @@
         <RepositoryUrl>https://github.com/digbyswift/Digbyswift.Umbraco.SeoEditor</RepositoryUrl>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageReleaseNotes>A property editor for metadata, largely inspired by the v7 SeoMetadata package.</PackageReleaseNotes>
         <PackageTags>c# umbraco</PackageTags>
-        <PackageVersion>10.2.1</PackageVersion>
-        <AssemblyVersion>10.2.1</AssemblyVersion>
-        <FileVersion>10.2.1</FileVersion>
+        <PackageVersion>13.1.0</PackageVersion>
+        <AssemblyVersion>13.1.0</AssemblyVersion>
+        <FileVersion>13.1.0</FileVersion>
         <PackageIcon>package-icon.png</PackageIcon>
         <PackageIconUrl>package-icon.png</PackageIconUrl>
         <Nullable>enable</Nullable>
@@ -29,11 +30,7 @@
     </ItemGroup>
     <ItemGroup>
         <None Include="..\..\package-icon.png" Pack="true" PackagePath="" />
-    </ItemGroup>
-    <ItemGroup>
         <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
-    </ItemGroup>
-    <ItemGroup>
         <None Include="..\..\README.md" Pack="true" PackagePath="" />
     </ItemGroup>
     <ItemGroup>
