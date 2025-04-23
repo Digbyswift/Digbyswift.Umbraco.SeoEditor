@@ -28,16 +28,16 @@
         <None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="..\..\..\package-icon.png" Pack="true" PackagePath="" />
+        <None Include="..\..\package-icon.png" Pack="true" PackagePath="" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="..\..\..\LICENSE" Pack="true" PackagePath="" />
+        <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="..\..\..\README.md" Pack="true" PackagePath="" />
+        <None Include="..\..\README.md" Pack="true" PackagePath="" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\..\Digbyswift.Umbraco.SeoEditor.Core\Digbyswift.Umbraco.SeoEditor.Core.csproj" />
+      <ProjectReference Include="..\Digbyswift.Umbraco.SeoEditor.Core\Digbyswift.Umbraco.SeoEditor.Core.csproj" />
     </ItemGroup>
 
 </Project>
