@@ -56,8 +56,8 @@
             // Set the preview URL
             contentResource.getCultureAndDomains(currentState.id)
                 .then(function (data) {
-                    if (data.domains.length >= 1) {
-                        $scope.ds.data.preview.url = data.domains[0].substring(0, data.domains[0].length - 1);
+                    if (data.domains.length >= 1 && data.domains[0].name) {
+                        $scope.ds.data.preview.url = data.domains[0].name;
                     }
 
                     $scope.ds.isLoading = false;
