@@ -14,9 +14,9 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageReleaseNotes>A property editor for metadata, largely inspired by the v7 SeoMetadata package.</PackageReleaseNotes>
         <PackageTags>c# umbraco</PackageTags>
-        <PackageVersion>13.1.0</PackageVersion>
-        <AssemblyVersion>13.1.0</AssemblyVersion>
-        <FileVersion>13.1.0</FileVersion>
+        <PackageVersion>13.1.1-preview0</PackageVersion>
+        <AssemblyVersion>13.1.1</AssemblyVersion>
+        <FileVersion>13.1.1</FileVersion>
         <PackageIcon>package-icon.png</PackageIcon>
         <PackageIconUrl>package-icon.png</PackageIconUrl>
         <Nullable>enable</Nullable>
