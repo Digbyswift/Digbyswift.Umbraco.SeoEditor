@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{0DE73A7F-311C-4435-90AB-9C72107231A6}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		azure-pipeline.yaml = azure-pipeline.yaml
+		Directory.Build.props = Directory.Build.props
+		StyleCopAnalyzers.Custom.ruleset = StyleCopAnalyzers.Custom.ruleset
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digbyswift.Umbraco.v16.UI", "Digbyswift.Umbraco.v16.UI\Digbyswift.Umbraco.v16.UI.csproj", "{644B410F-A334-30AD-7BF6-CD8B7EE9D373}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digbyswift.Umbraco.v16.Demo.PropertyEditor", "Digbyswift.Umbraco.v16.Demo.PropertyEditor\Digbyswift.Umbraco.v16.Demo.PropertyEditor.csproj", "{EA942450-FD4E-8CE3-A4C6-74E37C14F331}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digbyswift.Umbraco.v16.Demo.Workspace", "Digbyswift.Umbraco.v16.Demo.ContentApp\Digbyswift.Umbraco.v16.Demo.Workspace.csproj", "{0A77D5E6-158E-472A-8005-58DDF46942A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Digbyswift.Umbraco.v16.Demo.Dashboard", "Digbyswift.Umbraco.v16.Demo.Dashboard\Digbyswift.Umbraco.v16.Demo.Dashboard.csproj", "{6124DAD0-9096-42E2-947F-176133306136}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{644B410F-A334-30AD-7BF6-CD8B7EE9D373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{644B410F-A334-30AD-7BF6-CD8B7EE9D373}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{644B410F-A334-30AD-7BF6-CD8B7EE9D373}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{644B410F-A334-30AD-7BF6-CD8B7EE9D373}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA942450-FD4E-8CE3-A4C6-74E37C14F331}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA942450-FD4E-8CE3-A4C6-74E37C14F331}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA942450-FD4E-8CE3-A4C6-74E37C14F331}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA942450-FD4E-8CE3-A4C6-74E37C14F331}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A77D5E6-158E-472A-8005-58DDF46942A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A77D5E6-158E-472A-8005-58DDF46942A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A77D5E6-158E-472A-8005-58DDF46942A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A77D5E6-158E-472A-8005-58DDF46942A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6124DAD0-9096-42E2-947F-176133306136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6124DAD0-9096-42E2-947F-176133306136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6124DAD0-9096-42E2-947F-176133306136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6124DAD0-9096-42E2-947F-176133306136}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2A5B116-EEC0-4789-8EF2-83032DCDACA4}
+	EndGlobalSection
+EndGlobal

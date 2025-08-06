@@ -1,0 +1,20 @@
+{
+    "$schema": "../../umbraco-package-schema.json",
+    "name": "My.AwesomePackage",
+    "version": "0.1.0",
+    "extensions": [
+        {
+            "type": "propertyEditorUi",
+            "alias": "My.PropertyEditorUi.Suggestions",
+            "name": "My Suggestions Property Editor UI",
+            "element": "/App_Plugins/DemoPropertyEditor/suggestions-property-editor-ui.element.js",
+            "elementName": "my-suggestions-property-editor-ui",
+            "meta": {
+                "label": "Suggestions",
+                "icon": "icon-list",
+                "group": "common",
+                "propertyEditorSchemaAlias": "Umbraco.Plain.String"
+            }
+        }
+    ]
+}

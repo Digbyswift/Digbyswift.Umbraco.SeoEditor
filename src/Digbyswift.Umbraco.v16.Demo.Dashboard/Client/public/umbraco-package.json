@@ -1,0 +1,14 @@
+{
+  "id": "Digbyswift.Umbraco.v16.Demo.Dashboard",
+  "name": "Digbyswift.Umbraco.v16.Demo.Dashboard",
+  "version": "0.0.0",
+  "allowTelemetry": true,
+  "extensions": [
+    {
+      "name": "Digbyswift Umbracov 16Demo Dashboard Bundle",
+      "alias": "Digbyswift.Umbraco.v16.Demo.Dashboard.Bundle",
+      "type": "bundle",
+      "js": "/App_Plugins/DigbyswiftUmbracov16DemoDashboard/digbyswift-umbraco-v-16-demo-dashboard.js"
+    }
+  ]
+}
