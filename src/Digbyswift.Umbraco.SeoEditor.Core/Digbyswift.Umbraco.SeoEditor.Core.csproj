@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <ContentTargetFolders>.</ContentTargetFolders>
         <ImplicitUsings>enable</ImplicitUsings>
@@ -14,9 +14,9 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageReleaseNotes>Supporting library for the Digbyswift.Umbraco.SeoEditor package.</PackageReleaseNotes>
         <PackageTags>c# umbraco</PackageTags>
-        <PackageVersion>13.1.1-preview0</PackageVersion>
-        <AssemblyVersion>13.1.1</AssemblyVersion>
-        <FileVersion>13.1.1</FileVersion>
+        <PackageVersion>17.0.0-preview0</PackageVersion>
+        <AssemblyVersion>17.0.0</AssemblyVersion>
+        <FileVersion>17.0.0</FileVersion>
         <PackageIcon>package-icon.png</PackageIcon>
         <PackageIconUrl>package-icon.png</PackageIconUrl>
         <Nullable>enable</Nullable>
@@ -33,7 +33,7 @@
 
     <ItemGroup>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-        <PackageReference Include="Umbraco.Cms.Core" Version="13.1.1" />
+        <PackageReference Include="Umbraco.Cms.Core" Version="17.0.0" />
     </ItemGroup>
 
 </Project>
